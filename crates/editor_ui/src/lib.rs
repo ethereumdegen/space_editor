@@ -168,9 +168,10 @@ impl Plugin for EditorPlugin {
                 .require_markers = true;
         }
 
-        if !app.is_plugin_added::<bevy_debug_grid::DebugGridPlugin>() {
-            app.add_plugins(bevy_debug_grid::DebugGridPlugin::without_floor_grid());
-        }
+        // if !app.is_plugin_added::<bevy_debug_grid::DebugGridPlugin>() {
+        //     app.add_plugins(bevy_debug_grid::DebugGridPlugin::without_floor_grid());
+        // }
+
         app.init_resource::<EditorLoader>();
 
         app.insert_resource(PanOrbitEnabled(true));
@@ -814,5 +815,5 @@ pub fn simple_editor_setup(mut commands: Commands) {
         .insert(PickableBundle::default())
         .insert(RaycastPickable);
 
-    bevy_debug_grid::spawn_floor_grid(commands);
+    // bevy_debug_grid::spawn_floor_grid(commands);
 }

@@ -15,7 +15,8 @@ pub struct SelectedPlugin;
 impl Plugin for SelectedPlugin {
     fn build(&self, app: &mut App) {
         if !app.is_plugin_added::<WireframePlugin>() {
-            app.add_plugins(WireframePlugin);
+            // #[cfg(not(target_arch = "wasm32"))]
+            // app.add_plugins(WireframePlugin);
         }
         app.add_systems(
             Update,
