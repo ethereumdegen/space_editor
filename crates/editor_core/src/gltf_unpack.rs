@@ -3,7 +3,7 @@ use bevy::{
     ecs::system::CommandQueue,
     gltf::{Gltf, GltfMesh, GltfNode},
     prelude::*,
-    utils::HashMap,
+    utils::HashMap, render::mesh::skinning::SkinnedMesh,
 };
 
 use space_prefab::component::{AssetMaterial, AssetMesh, MaterialPrefab};
@@ -214,6 +214,7 @@ fn spawn_node(
                                     idx
                                 ),
                             },
+                            SkinnedMesh::default()
                         ));
 
                         if let Some(material_handle) = &mesh.primitives[idx].material {
