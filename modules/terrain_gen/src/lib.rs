@@ -11,6 +11,8 @@ pub mod inspector;
 #[cfg(feature = "meshed")]
 pub mod mesh;
 
+pub mod node_graph;
+
 pub use inspector::TerraingenInspectorPlugin;
 use space_shared::PrefabMarker;
 
