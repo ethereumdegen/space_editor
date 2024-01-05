@@ -91,11 +91,12 @@ pub struct SendEvent {
     name: String,
     path: String,
     pub type_id: TypeId,
-    func: Arc<dyn Fn(&mut World) + Send + Sync>,
+    t: Arc<dyn Event>,
+    func: Arc<dyn Fn(&mut World, Arc<dyn Event>) + Send + Sync>,
 }
 
 impl SendEvent {
-    pub fn new<T: Default + Event + Resource>() -> Self {
+    pub fn new<T: Default + Event + Resource + Reflect + Sized + Send + 'static + Sync>() -> Self {
         let path = std::any::type_name::<T>().to_string();
         let name = path.split("::").last().unwrap_or("UnnamedEvent").into();
         let type_id = TypeId::of::<T>();
@@ -103,8 +104,10 @@ impl SendEvent {
             name,
             path,
             type_id,
-            func: Arc::new(move |world| {
-                world.send_event(T::default());
+            t: Arc::new(T::default()),
+            func: Arc::new(move |world, t| {
+                let t = t.clone().as_ref();
+                world.send_event(t);
             }),
         }
     }
@@ -118,7 +121,7 @@ impl SendEvent {
     }
 
     pub fn send(&self, world: &mut World) {
-        (self.func)(world);
+        (self.func)(world, self.t);
     }
 }
 

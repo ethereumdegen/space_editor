@@ -38,14 +38,12 @@ pub fn inspect(ui: &mut egui::Ui, world: &mut World, open_events: &mut HashMap<S
                         ui.push_id(
                             format!("event-{:?}-{}", &event.type_id, &event.name()),
                             |ui| {
-                                bevy_inspector_egui::bevy_inspector::by_type_id::ui_for_resource(
-                                    world,
-                                    event.type_id,
+                                bevy_inspector_egui::bevy_inspector::ui_for_value(
+                                    event,
                                     ui,
-                                    event.name(),
-                                    &type_registry,
+                                    world,
                                 );
-
+                                
                                 let clicked = ui
                                     .button(event.name())
                                     .on_hover_text(event.path())
