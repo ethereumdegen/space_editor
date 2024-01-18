@@ -132,3 +132,6 @@ MIT - https://choosealicense.com/licenses/mit/
 
 I'm using the editor to create my own Sci-Fi space game, so the name of the project starts with space_ :)
 
+### Project support
+You can support project on boosty - https://boosty.to/rewin123
+
