@@ -13,6 +13,7 @@ impl Plugin for DockPlugin {
 
         app.add_systems(Update, (
                 panel_node_sync,
+                panel_split_sync,
             ).in_set(DockSystemSet),
         );
     }
@@ -22,13 +23,15 @@ impl Plugin for DockPlugin {
 pub struct DockColors {
     pub panel_background: Color,
     pub dock_background: Color,
+    pub panel_border_color: Color,
 }
 
 impl Default for DockColors {
     fn default() -> Self {
         Self {
             panel_background: Color::rgb_u8(32, 31, 35),
-            dock_background: Color::DARK_GRAY,
+            dock_background: Color::rgb_u8(51, 49, 55),
+            panel_border_color: Color::rgb_u8(35, 33, 38),
         }
     }
 }
@@ -40,13 +43,47 @@ pub struct Panel {
 
 #[derive(Component)]
 pub struct PanelSplit {
-    pub orientation: Orientation,
+    pub orientation: SplitOrientation,
     pub ratios: Vec<f32>,
 }
 
-enum Orientation {
+#[derive(PartialEq, Eq)]
+pub enum SplitOrientation {
     Horizontal,
     Vertical,
+}
+
+fn panel_split_sync(
+    mut commands : Commands,
+    mut query : Query<(Entity, &mut PanelSplit), Changed<PanelSplit>>,
+    colors : Res<DockColors>,
+) {
+    for (entity, panel_split) in query.iter_mut() {
+
+        let mut style = Style {
+            height: Val::Percent(100.0),
+            width: Val::Percent(100.0),
+            display: Display::Grid,
+            ..default()
+        };
+
+        if panel_split.orientation == SplitOrientation::Horizontal {
+            style.grid_template_columns = panel_split.ratios.iter().map(|ratio| GridTrack::flex(*ratio)).collect();
+            style.grid_template_rows = vec![GridTrack::flex(1.0)];
+            style.column_gap = Val::Px(7.0);
+        } else {
+            style.grid_template_rows = panel_split.ratios.iter().map(|ratio| GridTrack::flex(*ratio)).collect();
+            style.grid_template_columns = vec![GridTrack::flex(1.0)];
+            style.row_gap = Val::Px(7.0);
+        }
+
+        commands.entity(entity).insert((
+            NodeBundle {
+                style,
+                ..default()
+            }
+        ));
+    }
 }
 
 
@@ -55,7 +92,7 @@ fn panel_node_sync(
     mut query : Query<(Entity, &mut Panel), Changed<Panel>>,
     colors : Res<DockColors>,
 ) {
-    for (entity, mut panel) in query.iter_mut() {
+    for (entity, panel) in query.iter_mut() {
         info!("Update panel node: {}", panel.name);
         commands.entity(entity).insert((
             NodeBundle {
@@ -67,14 +104,10 @@ fn panel_node_sync(
                     overflow: Overflow::clip(),
                     
                     padding: UiRect::all(Val::Px(5.0)),
-                    margin: UiRect {
-                        left: Val::Px(5.0),
-                        right: Val::Px(5.0),
-                        top: Val::Px(5.0),
-                        bottom: Val::Px(5.0),
-                    },
+                    border: UiRect::all(Val::Px(1.0)),
                     ..default()
                 },
+                border_color: BorderColor(colors.panel_border_color),
                 background_color: BackgroundColor(colors.panel_background),
                 ..default()
             },

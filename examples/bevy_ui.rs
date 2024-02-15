@@ -14,7 +14,39 @@ fn setup(
 ) {
     commands.spawn(Camera2dBundle::default());
 
-    commands.spawn(Panel {
-        name: "Test".to_string(),
+    commands.spawn(NodeBundle {
+        style: Style {
+            padding: UiRect::all(Val::Px(7.)),
+            height: Val::Percent(100.),
+            width: Val::Percent(100.),
+            ..default()
+        },
+        ..default()
+    }).with_children(|children| {
+        children.spawn(PanelSplit {
+            orientation: SplitOrientation::Horizontal,
+            ratios: vec![0.2, 0.5, 0.3],
+        }).with_children(|children| {
+            children.spawn(Panel {
+                name: "Test".to_string(),
+            });
+
+            children.spawn(Panel {
+                name: "Test2".to_string(),
+            });
+
+            children.spawn(PanelSplit {
+                orientation: SplitOrientation::Vertical,
+                ratios: vec![0.5, 0.5],
+            }).with_children(|children| {
+                children.spawn(Panel {
+                    name: "Test3".to_string(),
+                });
+
+                children.spawn(Panel {
+                    name: "Test4".to_string(),
+                });
+            });
+        });
     });
 }
