@@ -1,0 +1,538 @@
+(
+  resources: {},
+  entities: {
+    9: (
+      components: {},
+    ),
+    10: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 311.21863,
+            y: 5.5926695,
+            z: 211.949,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 13665220680133001805,
+          name: "tree_pink_1",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::save::ChildrenPrefab": ([
+          4294967301,
+          18,
+        ]),
+      },
+    ),
+    11: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 296.43195,
+            y: 5.5926695,
+            z: 214.19812,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 13665220680133001805,
+          name: "tree_pink_1",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::save::ChildrenPrefab": ([
+          14,
+          15,
+        ]),
+      },
+    ),
+    12: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.00000000000051159077,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/birch_yellow.glb#Mesh0/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/birch_yellow.glb#Material0",
+        ),
+      },
+    ),
+    13: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 279.04352,
+            y: 4.542946,
+            z: 203.63951,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 13665220680133001805,
+          name: "birch_yellow_1",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::save::ChildrenPrefab": ([
+          12,
+          19,
+        ]),
+      },
+    ),
+    14: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_pink_1.glb#Mesh0/Primitive1",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_pink_1.glb#Material1",
+        ),
+      },
+    ),
+    15: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_pink_1.glb#Mesh0/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_pink_1.glb#Material0",
+        ),
+      },
+    ),
+    16: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+      },
+    ),
+    18: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_pink_1.glb#Mesh0/Primitive1",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_pink_1.glb#Material1",
+        ),
+      },
+    ),
+    19: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/birch_yellow.glb#Mesh0/Primitive1",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/birch_yellow.glb#Material1",
+        ),
+      },
+    ),
+    20: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+      },
+    ),
+    4294967301: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_pink_1.glb#Mesh0/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_pink_1.glb#Material0",
+        ),
+      },
+    ),
+    4294967322: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 227.26518,
+            y: 5.9243903,
+            z: 233.50185,
+          ),
+          rotation: (
+            x: 0.050018765,
+            y: 0.7053356,
+            z: -0.7053353,
+            w: 0.050018743,
+          ),
+          scale: (
+            x: 0.010000002,
+            y: 0.009999849,
+            z: 0.009999849,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 1662656320445617854,
+          name: "elf_rock_tree",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/elf_rock_tree.glb#Mesh1/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/elf_rock_tree.glb#Material0",
+        ),
+      },
+    ),
+    4294967343: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_purple_1.glb#Mesh0/Primitive1",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_purple_1.glb#Material1",
+        ),
+      },
+    ),
+    4294967344: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/tree_purple_1.glb#Mesh0/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/tree_purple_1.glb#Material0",
+        ),
+      },
+    ),
+    8589934637: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 97.73583,
+            y: 6.038253,
+            z: 213.2273,
+          ),
+          rotation: (
+            x: 0.7071068,
+            y: 0.0,
+            z: 0.0,
+            w: 0.7071067,
+          ),
+          scale: (
+            x: 0.01,
+            y: 0.009999834,
+            z: 0.009999834,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 1662656320445617854,
+          name: "bonfire",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/bonfire.glb#Mesh1/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/bonfire.glb#Material0",
+        ),
+      },
+    ),
+    12884901917: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 237.84685,
+            y: 5.650029,
+            z: 205.59175,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 1662656320445617854,
+          name: "tree_purple_1",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::save::ChildrenPrefab": ([
+          4294967344,
+          4294967343,
+        ]),
+      },
+    ),
+    12884901937: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 221.83603,
+            y: 5.6584783,
+            z: 211.88359,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.98398596,
+            z: 0.0,
+            w: -0.17824599,
+          ),
+          scale: (
+            x: 1.0000005,
+            y: 1.0,
+            z: 1.0000005,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 1662656320445617854,
+          name: "house_5",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::AssetMesh": (
+          path: "models/doodads/house_5.glb#Mesh18/Primitive0",
+        ),
+        "space_prefab::component::AssetMaterial": (
+          path: "models/doodads/house_5.glb#Material0",
+        ),
+      },
+    ),
+    21474836501: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: 0.0,
+            y: 0.0,
+            z: 0.0,
+            w: 1.0,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::save::ChildrenPrefab": ([
+          22,
+          23,
+          24,
+          25,
+        ]),
+      },
+    ),
+  },
+)

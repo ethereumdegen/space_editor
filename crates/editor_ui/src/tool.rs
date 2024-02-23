@@ -1,8 +1,12 @@
+use std::any::Any;
+
 use bevy::prelude::*;
 
 use crate::prelude::GameViewTab;
 
 pub trait EditorTool {
+    fn as_any(&self) -> &dyn Any;
+
     fn ui(&mut self, ui: &mut bevy_egui_next::egui::Ui, commands: &mut Commands, world: &mut World);
     fn name(&self) -> &str;
 }
