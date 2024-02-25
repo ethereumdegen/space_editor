@@ -28,7 +28,7 @@ impl EditorTab for TerrainTab {
         if ui.button("Spawn new terrain").clicked() {
             commands.spawn((
                 SpatialBundle::default(),
-                TerrainConfig::load_from_file("assets/default_terrain/terrain_config.ron").unwrap(),
+                TerrainConfig::load_from_file("assets/terrain/default_terrain/terrain_config.ron").unwrap(),
                 TerrainData::new(),
                 PrefabMarker,
             ));

@@ -1,5 +1,8 @@
 // Remove after update to newer rust version
 #![allow(clippy::type_complexity)]
+#[cfg(test)]
+mod tests;
+
 use std::sync::Arc;
 
 use bevy::{prelude::*, utils::HashMap};
@@ -372,8 +375,7 @@ impl<T: Component + Clone> EditorChange for ComponentChange<T> {
 
         world
             .entity_mut(e)
-            .insert(self.old_value.clone())
-            .insert(OneFrameUndoIgnore::default());
+            .insert((self.old_value.clone(), OneFrameUndoIgnore::default()));
         info!("Reverted ComponentChange for entity: {}", e.index());
         Ok(ChangeResult::Success)
     }
@@ -405,10 +407,10 @@ impl<T: Component + Reflect + FromReflect> EditorChange for ReflectedComponentCh
     ) -> Result<ChangeResult, String> {
         let e = get_entity_with_remap(self.entity, entity_remap);
 
-        world
-            .entity_mut(e)
-            .insert(<T as FromReflect>::from_reflect(&self.old_value).unwrap())
-            .insert(OneFrameUndoIgnore::default());
+        world.entity_mut(e).insert((
+            <T as FromReflect>::from_reflect(&self.old_value).unwrap(),
+            OneFrameUndoIgnore::default(),
+        ));
         world.send_event(UndoRedoApplied::<T> {
             entity: e,
             _phantom: std::marker::PhantomData,
@@ -552,8 +554,7 @@ impl<T: Component + Clone> EditorChange for RemovedComponent<T> {
 
         world
             .entity_mut(dst)
-            .insert(self.old_value.clone())
-            .insert(OneFrameUndoIgnore::default());
+            .insert((self.old_value.clone(), OneFrameUndoIgnore::default()));
 
         info!("Reverted RemovedComponent for entity: {}", dst.index());
 
@@ -597,10 +598,10 @@ impl<T: Component + Reflect + FromReflect> EditorChange for ReflectedRemovedComp
             |remaped| *remaped,
         );
 
-        world
-            .entity_mut(dst)
-            .insert(<T as FromReflect>::from_reflect(&self.old_value).unwrap())
-            .insert(OneFrameUndoIgnore::default());
+        world.entity_mut(dst).insert((
+            <T as FromReflect>::from_reflect(&self.old_value).unwrap(),
+            OneFrameUndoIgnore::default(),
+        ));
         world.send_event(UndoRedoApplied::<T> {
             entity: dst,
             _phantom: std::marker::PhantomData,
@@ -1059,115 +1060,5 @@ fn auto_undo_reflected_system<T: Component + Reflect + FromReflect>(
         } else {
             marker.latency = AUTO_UNDO_LATENCY;
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-
-    use super::*;
-
-    fn configure_app() -> App {
-        let mut app = App::new();
-        app.add_plugins(MinimalPlugins).add_plugins(UndoPlugin);
-        app
-    }
-
-    #[test]
-    fn test_undo() {
-        let mut app = configure_app();
-        app.auto_undo::<Name>();
-
-        app.update();
-
-        let test_id = app.world.spawn_empty().id();
-        app.world.send_event(NewChange {
-            change: Arc::new(AddedEntity { entity: test_id }),
-        });
-
-        app.update();
-        app.update();
-
-        app.world
-            .entity_mut(test_id)
-            .insert(Name::default())
-            .insert(UndoMarker);
-        app.world.get_mut::<Name>(test_id).unwrap().set_changed();
-
-        app.update();
-        app.update();
-        app.update();
-        app.update();
-        app.update();
-        app.update();
-
-        assert!(app.world.get_entity(test_id).is_some());
-
-        app.world.send_event(UndoRedo::Undo);
-
-        app.update();
-        app.update();
-
-        app.update();
-        app.update();
-        app.update();
-
-        assert!(app.world.get::<Name>(test_id).is_none());
-        assert!(app.world.get_entity(test_id).is_some());
-
-        app.world.send_event(UndoRedo::Undo);
-        app.update();
-        app.update();
-
-        assert!(app.world.get_entity(test_id).is_none());
-    }
-
-    #[test]
-    fn test_undo_with_remap() {
-        let mut app = configure_app();
-        app.add_plugins(HierarchyPlugin);
-
-        app.auto_reflected_undo::<Parent>();
-        app.auto_reflected_undo::<Children>();
-
-        let test_id_1 = app.world.spawn(UndoMarker).id();
-        let test_id_2 = app.world.spawn(UndoMarker).id();
-
-        app.world.send_event(NewChange {
-            change: Arc::new(AddedEntity { entity: test_id_1 }),
-        });
-        app.world.send_event(NewChange {
-            change: Arc::new(AddedEntity { entity: test_id_2 }),
-        });
-
-        app.update();
-        app.update();
-
-        app.world.entity_mut(test_id_1).add_child(test_id_2);
-
-        app.update();
-        app.update();
-        app.cleanup();
-
-        app.world.entity_mut(test_id_1).despawn_recursive();
-        app.world.send_event(NewChange {
-            change: Arc::new(RemovedEntity { entity: test_id_1 }),
-        });
-
-        app.update();
-        app.update();
-
-        app.world.send_event(UndoRedo::Undo);
-
-        app.update();
-        app.update();
-        app.update();
-
-        assert!(app.world.get_entity(test_id_1).is_none());
-        assert!(app.world.get_entity(test_id_2).is_none());
-        assert_eq!(app.world.entities().len(), 2);
-
-        let mut query = app.world.query::<&Children>();
-        assert!(query.get_single(&app.world).is_ok());
     }
 }
